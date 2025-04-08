@@ -2,7 +2,7 @@ import { DeliverooApi } from "@unitn-asa/deliveroo-js-client";
 
 const client = new DeliverooApi(
     'https://deliveroojs25.azurewebsites.net',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJjOTQyMSIsIm5hbWUiOiJtYXJjbyIsInRlYW1JZCI6IjViMTVkMSIsInRlYW1OYW1lIjoiZGlzaSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQyNTY3NDE4fQ.5m8St0OZo_DCXCriYkLtsguOm1e20-IAN2JNgXL7iUQ'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQ5NjdlYiIsIm5hbWUiOiJSUl9SIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDQxMDU3ODV9.FTD05EtTVB-tfsh0gcvf00BjtuAiqOl1iMQ53nVVXrc'
 )
 
 function distance( {x:x1, y:y1}, {x:x2, y:y2}) {
@@ -49,6 +49,8 @@ console.log(me.name, 'goes from', me.x, me.y, 'to', target.x, target.y);
 
 while ( me.x != target.x || me.y != target.y ) {
 
+    // We wait to receive the new position of the agent, so we can move only when we are in the right position
+    // and we can move to the next position.
     var m = new Promise( res => client.onYou( m => m.x % 1 != 0 || m.y % 1 != 0 ? null : res() ) );
 
     if ( me.x < target.x )
