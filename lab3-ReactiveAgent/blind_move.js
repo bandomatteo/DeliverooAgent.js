@@ -1,3 +1,5 @@
+// In order to run this code, you need to run as "node blind_move <target_x> <target_y>"
+
 import { DeliverooApi } from "@unitn-asa/deliveroo-js-client";
 
 const client = new DeliverooApi(
