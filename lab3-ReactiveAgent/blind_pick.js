@@ -46,24 +46,6 @@ function distance( {x:x1, y:y1}, {x:x2, y:y2} ) {
     return dx + dy;
 }
 
-<<<<<<< HEAD
-const me = {};
-
-client.onYou( ( {id, name, x, y, score} ) => {
-    me.id = id
-    me.name = name
-    me.x = x
-    me.y = y
-    me.score = score
-} )
-
-const db = new Map()
-
-client.onParcelsSensing( async ( parcels ) => {
-    
-    console.log( `me(${me.x},${me.y})`,
-        parcels
-=======
 
 
 async function blindMove ( target ) {
@@ -98,32 +80,10 @@ while (true) {
 
     console.log( `me(${me.x},${me.y})`,
         Array.from( parcels.values() )
->>>>>>> 59ef71ee8409ae1f10595a452500fd3185ea45cf
         .map( p => `${p.reward}@(${p.x},${p.y})` )
         .join( ' ' )
     );
 
-<<<<<<< HEAD
-    // TODO1
-    // This creates a problem because I'm sennding the statement to the server before completing the previous one, thus I'll get a penalty
-    for ( let p of parcels ) {
-        if ( ! p.carriedBy ) {
-            if ( me.x < p.x )
-                await client.emitMove('right');
-            else if ( me.x > p.x )
-                await client.emitMove('left')
-            else if ( me.y < p.y )
-                await client.emitMove('up')
-            else if ( me.y > p.y )
-                await client.emitMove('down')
-            client.emitPickup();
-        }
-    }
-
-} )
-
-
-=======
     // get nearest parcel
     const nearest = Array.from( parcels.values() )
     .filter( p => ! p.carriedBy )
@@ -150,4 +110,3 @@ while (true) {
     console.log( 'picked up' );
 
 }
->>>>>>> 59ef71ee8409ae1f10595a452500fd3185ea45cf
